@@ -2,21 +2,34 @@
 
 package com.hp.bean;
 
+import java.util.Arrays;
+
 public class User {
     private String username;//用户名
     private String password;//密码
     private double money;//余额
-    //封装，构造，输出Alt+Insert
+    private Car[] myCars={};
+
+    public Car[] getMyCars() {
+        return myCars;
+    }
+
+    public void setMyCars(Car[] myCars) {
+        this.myCars = myCars;
+    }
+//封装，构造，输出Alt+Insert
 
     public static void main(String[] args) {
         System.out.println(new User());
     }
-    @Override //输出对象时，不在输出哈希值，二十输出属性值
-    public String toString() {
+
+    @Override
+    public String toString() {//输出对象时，不在输出哈希值，二十输出属性值
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", money=" + money +
+                ", myCars=" + Arrays.toString(myCars) +
                 '}';
     }
 

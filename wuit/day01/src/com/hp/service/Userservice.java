@@ -2,8 +2,10 @@
 
 package com.hp.service;
 
+import com.hp.bean.Car;
 import com.hp.bean.User;
 import com.hp.dao.UserDao;
+import com.hp.utils.CarUtil;
 
 import java.util.Scanner;
 
@@ -46,14 +48,35 @@ public class Userservice {
     }
 
     public void addInCome() {
-        System.out.println("账户余额充值业务");
+        System.out.println("---------充值业务--------");
+        System.out.println("请输入您要充值的金额：");
+        double money = sc.nextDouble();
+        curr_login_user.setMoney(curr_login_user.getMoney()+money);
     }
 
     public void lookOrByCars() {
-        System.out.println("跑车4s店欢迎您");
-    }
+        System.out.println("-------跑车4s店欢迎您-----");
+        //1.展示所有车型look
+        CarUtil.showCars(CarUtil.getCars());
+        System.out.println("请问您想买哪一款跑车：1.奔驰大G 2.保时捷918 3.兰博基尼小牛  4.先不买");
+        //2.买车业务：1.扣款2.交车
+        int i = sc.nextInt();
+        Car[] cars = CarUtil.getCars();
+        if (i <= cars.length && i >= 1) {
+            //2.1扣款
+            curr_login_user.setMoney(curr_login_user.getMoney() - cars[i-1].getPrice());
+            //2.2交车--存到当前用户的车库
+            Car[] myCars = CarUtil.addMyCars(curr_login_user.getMyCars(), cars[i - 1]);
+            curr_login_user.setMyCars(myCars);
+            System.out.println("恭喜您成为尊贵的"+cars[i-1].getBrand()+"车主,愿您生活愉快");
 
+        }else {
+            System.out.println("您可以暂时寄存您的梦想，来日方长");
+        }
+    }
+    //1.展示所有车型look
     public void showMyCars() {
-        System.out.println("进入我的车库");
+        System.out.println("-------进入我的私人车库--------");
+        CarUtil.showCars(curr_login_user.getMyCars());
     }
 }

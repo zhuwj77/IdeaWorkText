@@ -3,27 +3,27 @@
 package com.hp.bean;
 
 public class Car {
-    private String bran;//品牌
+    private String brand;//品牌
     private String type;//型号
-    private String price;//价格
+    private double price;//价格
     private String color;//颜色
 
     @Override
     public String toString() {
         return "Car{" +
-                "bran='" + bran + '\'' +
+                "bran='" + brand + '\'' +
                 ", type='" + type + '\'' +
                 ", price='" + price + '\'' +
                 ", color='" + color + '\'' +
                 '}';
     }
 
-    public String getBran() {
-        return bran;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBran(String bran) {
-        this.bran = bran;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getType() {
@@ -34,11 +34,11 @@ public class Car {
         this.type = type;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -53,8 +53,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(String bran, String type, String price, String color) {
-        this.bran = bran;
+    public Car(String bran, String type, double price, String color) {
+        this.brand = bran;
         this.type = type;
         this.price = price;
         this.color = color;
